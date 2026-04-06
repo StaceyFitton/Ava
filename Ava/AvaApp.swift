@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct AvaApp: App {
+    @State private var container = AvaAppContainer(
+           appGroupID: "group.com.staceyfitton.ava"
+       )
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //RootTabView(container: container)
+            RootTabView()
+                .environment(container)
+                //.environment(container.)
         }
     }
 }
+
