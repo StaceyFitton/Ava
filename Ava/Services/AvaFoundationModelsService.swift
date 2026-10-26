@@ -18,9 +18,9 @@ public final class AvaFoundationModelsService: AIServiceProtocol {
         return "[FM] Summary: \(text.prefix(80))…"
     }
 
-    public func generateResponse(to prompt: String) async throws -> String {
+    public func generateResponseOptions(to prompt: String) async throws -> [String] {
         // TODO: Integrate with Apple Foundation Models generation API
-        return "[FM] Response for: \(prompt)"
+        return ["[FM] Response for: \(prompt)"]
     }
 
     public func classify(text: String, labels: [String]) async throws -> String {

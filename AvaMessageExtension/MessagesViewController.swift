@@ -11,11 +11,11 @@ import Messages
 final class MessagesViewController: MSMessagesAppViewController {
 
     @MainActor
-   private let container = MessageExtensionContainer(
-       appGroupID: "group.com.staceyfitton.ava"
-   )
-    
-    private var hostingController: UIHostingController<MessageComposerView>?
+    private let container = MessageExtensionContainer(
+        appGroupID: "group.com.staceyfitton.ava"
+    )
+
+    private var hostingController: UIHostingController<AnyView>?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +24,13 @@ final class MessagesViewController: MSMessagesAppViewController {
 
     override func willBecomeActive(with conversation: MSConversation) {
         super.willBecomeActive(with: conversation)
+        container.updateConversation(conversation)
         updateRootView()
     }
 
     override func didReceive(_ message: MSMessage, conversation: MSConversation) {
         super.didReceive(message, conversation: conversation)
+        container.updateConversation(conversation)
 
         let payload = parseMessage(message)
         print("Received payload text: \(payload.text ?? "nil")")
@@ -64,15 +66,10 @@ final class MessagesViewController: MSMessagesAppViewController {
         hostingController?.rootView = makeRootView()
     }
 
-    private func makeRootView() -> MessageComposerView {
-        MessageComposerView(
-            presentationStyle: presentationStyle,
-            onRequestExpand: { [weak self] in
-                self?.requestPresentationStyle(.expanded)
-            },
-            onSend: { [weak self] text, itemID in
-                self?.sendMessage(text: text, itemID: itemID)
-            }
+    private func makeRootView() -> AnyView {
+        AnyView(
+            MessagesRootView()
+                .environment(container)
         )
     }
 

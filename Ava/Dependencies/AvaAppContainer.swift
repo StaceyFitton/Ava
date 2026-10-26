@@ -19,8 +19,8 @@ struct MockAIService: AIServiceProtocol {
         return "Summary: \(text.prefix(40))…"
     }
 
-    func generateResponse(to prompt: String) async throws -> String {
-        return "Generated response to: \(prompt)"
+    func generateResponseOptions(to prompt: String) async throws -> [String] {
+        return ["Generated responses to: \(prompt)"]
     }
 
     func classify(text: String, labels: [String]) async throws -> String {

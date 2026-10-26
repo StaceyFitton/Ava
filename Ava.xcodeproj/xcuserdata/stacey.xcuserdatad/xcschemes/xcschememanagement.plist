@@ -9,10 +9,28 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>AvaMessageExt2.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 		<key>AvaMessageExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>011C58632F7E7C9000D51371</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>016D8EEA2F7FF00700990BED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
